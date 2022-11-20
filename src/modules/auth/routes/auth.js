@@ -1,4 +1,4 @@
-const { Auth } = require("../../../services");
+const { Auth } = require("../../../common");
 const AuthController = require("../services/auth");
 
 module.exports = function (app) {

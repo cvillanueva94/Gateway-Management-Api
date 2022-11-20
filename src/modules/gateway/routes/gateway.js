@@ -1,5 +1,5 @@
 const Gateway = require("../services/gateway");
-const { Auth } = require("../../../services");
+const { Auth } = require("../../../common");
 module.exports = function (app) {
 	app.get("/api/gateway/:id", Auth.withAuth, async (req, res) => {
 		// #swagger.tags = ['Gateway']
