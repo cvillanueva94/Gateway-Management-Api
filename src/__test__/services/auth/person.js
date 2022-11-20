@@ -3,7 +3,7 @@ const mongoConfig = require("../../../config").Mongo;
 const { Person } = require("../../../controllers");
 
 beforeEach((done) => {
-	mongoose.connect(`mongodb://${mongoConfig.path}/+JestDB`, { useNewUrlParser: true, useUnifiedTopology: true }, () => done());
+	mongoose.connect(`mongodb://${mongoConfig.path}:${mongoConfig.port}/+JestDB`, { useNewUrlParser: true, useUnifiedTopology: true }, () => done());
 });
 
 afterEach((done) => {

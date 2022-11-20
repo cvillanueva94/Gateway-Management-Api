@@ -5,7 +5,7 @@ const requestWithSupertest = supertest(server);
 const mongoConfig = require("../../config").Mongo;
 
 beforeEach((done) => {
-	mongoose.connect(`mongodb://${mongoConfig.path}/+JestDB`, { useNewUrlParser: true, useUnifiedTopology: true }, () => done());
+	mongoose.connect(`mongodb://${mongoConfig.path}:${mongoConfig.port}/+JestDB`, { useNewUrlParser: true, useUnifiedTopology: true }, () => done());
 });
 
 afterEach((done) => {
