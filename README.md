@@ -33,6 +33,16 @@ $ yarn start
 $ yarn swagger-generate
 ```
 
+## Swagger
+
+```bash
+# development | prod
+$ yarn start
+
+# explore:
+http://{{HOST}}:{{PORT}}/v2/api-docs
+```
+
 ## MongoDB setup
 
 There is no difference on whether to use mongo locally or in a docker container, for both cases the mongo service must be running.
