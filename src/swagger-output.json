@@ -238,7 +238,7 @@
         ]
       }
     },
-    "/signup": {
+    "/api/signup": {
       "post": {
         "tags": [
           "Auth"
@@ -261,7 +261,7 @@
         }
       }
     },
-    "/login": {
+    "/api/login": {
       "get": {
         "tags": [
           "Auth"
