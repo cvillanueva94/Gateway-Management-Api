@@ -1,8 +1,7 @@
-const { Auth } = require("../../../common");
 const AuthController = require("../services/auth");
 
 module.exports = function (app) {
-	app.post("/signup", async (req, res) => {
+	app.post("/api/signup", async (req, res) => {
 		// #swagger.tags = ['Auth']
 		// #swagger.description = 'Signup a user'
 		/* #swagger.parameters['obj'] = {
@@ -14,7 +13,7 @@ module.exports = function (app) {
 		res.status(response.status || 200).json(response.json);
 	});
 
-	app.get("/login", async (req, res) => {
+	app.get("/api/login", async (req, res) => {
 		// #swagger.tags = ['Auth']
 		/* #swagger.security = [{
                "basicAuth": []

@@ -21,12 +21,12 @@ describe("AuthRoutes", () => {
 			userName: data?.userName || "admin2",
 			password: data?.password || "Asd1234*",
 		};
-		return { res: await requestWithSupertest.post("/signup").send(payload).set("Content-Type", "application/json").set("Accept", "application/json"), payload };
+		return { res: await requestWithSupertest.post("/api/signup").send(payload).set("Content-Type", "application/json").set("Accept", "application/json"), payload };
 	};
 	it("GET /login should login a user", async () => {
 		const { payload } = await signup();
 		const basicAuth = Buffer.from(`${payload.userName}:${payload.password}`).toString("base64");
-		const res = await requestWithSupertest.get("/login").set({ Authorization: `Basic ${basicAuth}` });
+		const res = await requestWithSupertest.get("/api/login").set({ Authorization: `Basic ${basicAuth}` });
 		expect(res.status).toEqual(200);
 		expect(res.type).toEqual(expect.stringContaining("json"));
 		expect(res.body).toHaveProperty("accessToken");
@@ -36,7 +36,7 @@ describe("AuthRoutes", () => {
 
 	it("GET /login should throw an username error", async () => {
 		const basicAuth = Buffer.from("admin2:Asd1234*").toString("base64");
-		const res = await requestWithSupertest.get("/login").set({ Authorization: `Basic ${basicAuth}` });
+		const res = await requestWithSupertest.get("/api/login").set({ Authorization: `Basic ${basicAuth}` });
 		expect(res.status).toEqual(400);
 		expect(res.type).toEqual(expect.stringContaining("json"));
 		expect(res.body).toHaveProperty("message");
@@ -45,7 +45,7 @@ describe("AuthRoutes", () => {
 
 	it("GET /login should throw a password error", async () => {
 		const basicAuth = Buffer.from("admin:asd1234*").toString("base64");
-		const res = await requestWithSupertest.get("/login").set({ Authorization: `Basic ${basicAuth}` });
+		const res = await requestWithSupertest.get("/api/login").set({ Authorization: `Basic ${basicAuth}` });
 		expect(res.status).toEqual(400);
 		expect(res.type).toEqual(expect.stringContaining("json"));
 		expect(res.body).toHaveProperty("message");
